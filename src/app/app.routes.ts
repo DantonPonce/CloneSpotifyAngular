@@ -1,9 +1,10 @@
 import { Routes } from "@angular/router";
+import { userIsOnResolver } from "./resolvers/userIsOn.resolver";
 
 export const AppRotas: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'player',
     pathMatch: 'full'
   },
   {
@@ -13,5 +14,8 @@ export const AppRotas: Routes = [
   {
     path: 'player',
     loadChildren: () => import('./pages/player/player.module').then(x => x.PlayerModule),
-  }
+    resolve: {
+      userIsOn: userIsOnResolver,
+    }
+  },
 ]

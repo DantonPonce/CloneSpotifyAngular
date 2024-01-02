@@ -1,0 +1,37 @@
+@import "variables.scss";
+
+$m-between-menus: 10px;
+
+:host {
+    button {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin-bottom: $m-between-menus;
+        padding: 10px 0 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-align: left;
+        color: $color-primary;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &.selected {
+            background: $color-primary;
+            color: $color-white;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            width: 150px;
+            white-space: nowrap;
+            margin-left: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
