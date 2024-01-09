@@ -26,7 +26,7 @@ export class LoginComponent {
     const token = this.spotifyService.getUrlCallbackToken();
     if (!!token){
       this.spotifyService.setTokenAcess(token);
-      this.router.navigate(['/player']);
+      this.router.navigate(['/player/home']);
     }
   }
 

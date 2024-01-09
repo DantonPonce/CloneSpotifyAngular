@@ -1,3 +1,5 @@
+import { TopArtistComponent } from './../../components/top-artist/top-artist.component';
+import { HomeComponent } from './../home/home.component';
 import { FooterUserComponent } from './../../components/footer-user/footer-user.component';
 import { MenuButtonComponent } from './../../components/menu-button/menu-button.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +15,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PlayerComponent,
     LeftBarComponent,
     MenuButtonComponent,
-    FooterUserComponent
+    FooterUserComponent,
+    HomeComponent,
+    TopArtistComponent
   ],
   imports: [
     CommonModule,
