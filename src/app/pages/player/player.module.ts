@@ -1,3 +1,4 @@
+import { RightBarComponent } from './../../components/right-bar/right-bar.component';
 import { TopArtistComponent } from './../../components/top-artist/top-artist.component';
 import { HomeComponent } from './../home/home.component';
 import { FooterUserComponent } from './../../components/footer-user/footer-user.component';
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MenuButtonComponent,
     FooterUserComponent,
     HomeComponent,
-    TopArtistComponent
+    TopArtistComponent,
+    RightBarComponent
   ],
   imports: [
     CommonModule,
