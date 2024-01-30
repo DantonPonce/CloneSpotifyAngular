@@ -1,7 +1,9 @@
+import { newMusic } from 'src/app/common/factories';
 import { IMusic } from './../Interfaces/IMusics';
 import { IArtist } from './../Interfaces/IArtist';
 import { IPlaylist } from './../Interfaces/IPlaylist';
 import { IUser } from './../Interfaces/IUser';
+import { addMilliseconds, format } from 'date-fns';
 
 export function SpotifyUserForUser(user: SpotifyApi.CurrentUsersProfileResponse): IUser {
     return {
@@ -28,8 +30,17 @@ export function SpotifyArtistForArtist(spotifyArtist: SpotifyApi.ArtistObjectFul
 }
 
 export function SpotifyTrackForMusic(spotifyTrack: SpotifyApi.TrackObjectFull): IMusic {
+
+    if(!spotifyTrack)
+        return newMusic();
+
+    const msForMinutes = (ms: number) => {
+        const data = addMilliseconds(new Date(0), ms);
+        return format(data, 'mm:ss');
+    }
+
     return {
-        id: spotifyTrack.id,
+        id: spotifyTrack.uri,
         title: spotifyTrack.name,
         album: {
             id: spotifyTrack.album.id,
@@ -40,6 +51,6 @@ export function SpotifyTrackForMusic(spotifyTrack: SpotifyApi.TrackObjectFull): 
             id: artist.id,
             name: artist.name
         })),
-        time: ''
+        time: msForMinutes(spotifyTrack.duration_ms)
     }
 }

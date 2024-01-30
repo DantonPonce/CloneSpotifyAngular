@@ -89,6 +89,16 @@ export class SpotifyService {
     return musics.items.map(x => SpotifyTrackForMusic(x.track));
   }
 
+  async playMusic(idMusic: string){
+    await this.spotifyApi.queue(idMusic);
+    await this.spotifyApi.skipToNext();
+  }
+
+  async getCurrentMusic(): Promise<IMusic>{
+    const musicSpotify = await this.spotifyApi.getMyCurrentPlayingTrack();
+    return SpotifyTrackForMusic(musicSpotify.item!)
+  }
+
   logout(){
     localStorage.clear();
     this.router.navigate(['/login']);
