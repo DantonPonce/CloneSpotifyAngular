@@ -1,0 +1,12 @@
+ <input 
+    type="text" 
+    placeholder="Artists, Musics, Playlists..."
+    [(ngModel)]="research"
+    (keyup.Enter)="search()"
+    >
+ <div class="suggestions flex">
+     <span *ngFor="let research of recentsResearch"
+        (click)="setResearch(research)">
+         {{research}}
+     </span>
+ </div>
