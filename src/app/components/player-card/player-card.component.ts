@@ -12,10 +12,9 @@ import { faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons
 })
 export class PlayerCardComponent implements OnInit, OnDestroy {
 
-
   currentMusic: IMusic = newMusic()
   subs: Subscription[] = [];
-  backIcon = faStepBackward;
+  prevIcon = faStepBackward;
   nextIcon = faStepForward;
 
   constructor(
@@ -37,4 +36,14 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
 
     this.subs.push(sub);
   }
+
+  prevMusic() {
+    this.playerService.prevMusic();
+  }
+
+  nextMusic() {
+    this.playerService.nextMusic();
+  }
+
+
 }

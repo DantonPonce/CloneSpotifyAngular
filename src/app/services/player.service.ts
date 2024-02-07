@@ -33,4 +33,12 @@ export class PlayerService {
     this.currentMusic.next(music)
   }
 
+  async prevMusic(){
+    await this.spotifyService.prevMusic();
+  }
+
+  async nextMusic(){
+    await this.spotifyService.nexMusic();
+  }
+
 }
