@@ -21,7 +21,6 @@ export class TopArtistsComponent implements OnInit {
 
   async getTopArtists(){
     this.artists = await this.spotifyService.getTopArtists(5);
-    console.log(this.artists);
     
   }
 }

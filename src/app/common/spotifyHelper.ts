@@ -1,4 +1,4 @@
-import { newMusic } from 'src/app/common/factories';
+import { newMusic, newPlaylist } from 'src/app/common/factories';
 import { IMusic } from './../Interfaces/IMusics';
 import { IArtist } from './../Interfaces/IArtist';
 import { IPlaylist } from './../Interfaces/IPlaylist';
@@ -21,6 +21,18 @@ export function SpotifyPlaylistForPlaylist(playlist: SpotifyApi.PlaylistObjectSi
     }
 }
 
+export function SpotifySinglePlaylistForPlaylist(playlist: SpotifyApi.SinglePlaylistResponse): IPlaylist {
+    if (!playlist)
+        return newPlaylist();
+
+    return {
+        id: playlist.id,
+        name: playlist.name,
+        imageUrl: playlist.images.shift()?.url!,
+        musics : []
+    }
+}
+
 export function SpotifyArtistForArtist(spotifyArtist: SpotifyApi.ArtistObjectFull): IArtist {
     return {
         id: spotifyArtist.id,
@@ -31,7 +43,7 @@ export function SpotifyArtistForArtist(spotifyArtist: SpotifyApi.ArtistObjectFul
 
 export function SpotifyTrackForMusic(spotifyTrack: SpotifyApi.TrackObjectFull): IMusic {
 
-    if(!spotifyTrack)
+    if (!spotifyTrack)
         return newMusic();
 
     const msForMinutes = (ms: number) => {

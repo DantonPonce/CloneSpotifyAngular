@@ -39,4 +39,9 @@ export class LeftBarComponent implements OnInit {
     this.playlists = await this.spotifyService.getUserPlaylist()
   }
 
+  goToPlaylist(playlistId: string){
+    this.menuSelected = playlistId;
+    this.router.navigateByUrl(`player/list/playlist/${playlistId}`);
+  }
+
 }
